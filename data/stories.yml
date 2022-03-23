@@ -1,0 +1,26 @@
+version: "2.0"
+
+stories:
+
+- story: add task
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: add_task
+  - action: add_task_form
+  - active_loop: add_task_form
+  - active_loop: null
+  - action: action_confirm_add_task
+  - intent: affirm
+  - action: action_add_task
+  - action: utter_happy
+
+- story: get task
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: get_task
+  - action: get_task_form
+  - active_loop: get_task_form
+  - active_loop: null
+  - action: action_get_task

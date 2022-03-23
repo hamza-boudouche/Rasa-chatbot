@@ -1,0 +1,83 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - add_task
+  - get_task
+
+entities:
+  - time
+  - employee
+
+slots: 
+  time: 
+    type: any
+  employee:
+    type: any
+  task_title:
+    type: any
+  description:
+    type: any
+
+responses:
+  utter_greet:
+  - text: "Hey! How can I help you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_add_task_form_time:
+  - text: "for when?"
+
+  utter_ask_add_task_form_employee:
+  - text: "assigned to who?"
+
+  utter_ask_add_task_form_task_title:
+  - text: "title of the task?"
+
+  utter_ask_add_task_form_description:
+  - text: "description of the task?"
+
+actions:
+  - action_add_task
+  - action_get_task
+  - action_confirm_add_task
+
+forms:
+  add_task_form:
+    required_slots:
+      time:
+        - type: from_entity
+          entity: time
+      employee:
+        - type: from_entity
+          entity: employee
+      task_title:
+        - type: from_text
+          entity: task_title
+      description:
+        - type: from_text
+          entity: description
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
