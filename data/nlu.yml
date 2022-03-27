@@ -9,7 +9,6 @@ nlu:
     - hello there
     - good morning
     - good evening
-    - moin
     - hey there
     - let's go
     - hey dude
@@ -39,6 +38,10 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - okay
+    - ok
+    - okey 
+    - k
 
 - intent: deny
   examples: |
@@ -49,6 +52,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - nop
 
 - intent: mood_great
   examples: |
@@ -101,13 +105,26 @@ nlu:
 
 - intent: get_task
   examples: |
+    - get me all tasks
     - get me all tasks due before tomorrow at 10am
     - show tasks due before next monday for [hamza boudouche](employee)
     - look for the tasks assigned to [hamza boudouche](employee) that are due before next monday
     - what are the tasks that [hamza boudouche](employee) has, and that are due for next monday
+    - what tasks does [hamza boudouche](employee) have, and that are due for tomorrow
+    - fetch the tasks that are due next friday and that are assigned to [hamza boudouche](employee)
+
+- intent: add_event
+  examples: |
+    - add an event for tomorrow starting at 10am
+    - insert a new event for next monday
+    - create a new meeting for friday at 2pm
+    - can you add a reunion on next thursday 
+    - create a meeting for today at 8am
 
 - lookup: employee
   examples: |
     - hamza boudouche
     - soufiane boujida
     - amal derouich
+    - oussama bouzekraoui
+    - wissal akki

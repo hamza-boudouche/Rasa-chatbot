@@ -10,10 +10,15 @@ intents:
   - bot_challenge
   - add_task
   - get_task
+  - add_event
 
 entities:
   - time
   - employee
+  - end_time
+  - event_title
+  - description
+  - task_title
 
 slots: 
   time: 
@@ -23,6 +28,10 @@ slots:
   task_title:
     type: any
   description:
+    type: any
+  event_title:
+    type: any
+  end_time:
     type: any
 
 responses:
@@ -57,10 +66,30 @@ responses:
   utter_ask_add_task_form_description:
   - text: "description of the task?"
 
+  utter_ask_get_task_form_time:
+  - text: "due before when?"
+
+  utter_ask_get_task_form_employee:
+  - text: "for what employee"
+
+  utter_ask_add_event_form_time:
+  - text: "event starts at?"
+
+  utter_ask_add_event_form_end_time:
+  - text: "event ends at?"
+
+  utter_ask_add_event_form_event_title:
+  - text: "the event's title?"
+
+  utter_ask_add_event_form_description:
+  - text: "the event's description?"
+
 actions:
   - action_add_task
   - action_get_task
   - action_confirm_add_task
+  - action_confirm_add_event
+  - action_add_event
 
 forms:
   add_task_form:
@@ -75,6 +104,28 @@ forms:
         - type: from_text
           entity: task_title
       description:
+        - type: from_text
+          entity: description
+  get_task_form:
+    required_slots:
+      time:
+        - type: from_entity
+          entity: time
+      employee:
+        - type: from_entity
+          entity: employee
+  add_event_form:
+    required_slots:
+      time:
+        - type: from_entity
+          entity: time
+      end_time: 
+        - type: from_text
+          entity: end_time
+      event_title:
+        - type: from_text
+          entity: event_title
+      description: 
         - type: from_text
           entity: description
 

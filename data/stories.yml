@@ -24,3 +24,19 @@ stories:
   - active_loop: get_task_form
   - active_loop: null
   - action: action_get_task
+
+- story: add event
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: add_event
+  - action: add_event_form
+  - active_loop: add_event_form
+  - active_loop: null
+  - action: action_confirm_add_event
+  - intent: affirm
+  - action: utter_greet
+  - action: action_add_event
+  - action: utter_happy
+
+# parse participants emails list with regexp https://rasa.com/docs/rasa/nlu-training-data/#regular-expressions-for-entity-extraction 
